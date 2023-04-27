@@ -1,0 +1,12 @@
+<html>
+<div id="main">
+    <h2>This is a title.</h2>
+    <span onclick="check();">  </span>
+    <img src="/images/test.jpg">
+    <p> <a href="#">Look!</a>This is a paragraph.</p>
+</div>
+<script type="javascript">
+function check(){
+    alert("Error occurs.")
+}
+</script></html>

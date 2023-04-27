@@ -1,0 +1,23 @@
+{
+    "configurations": [
+        {
+            "name": "windows-clang-x64",
+            "includePath": [
+                "${workspaceFolder}/**"
+            ],
+            "defines": [
+                "_DEBUG",
+                "DADALZY"
+            ],
+            "compilerPath": "C:/Program Files/mingw64/bin/g++.exe",
+            "intelliSenseMode": "windows-clang-x64",
+            "compilerArgs": [
+                "-Wall",
+                "-DDADALZY"
+            ],
+            "cStandard": "c17",
+            "cppStandard": "c++17"
+        }
+    ],
+    "version": 4
+}
