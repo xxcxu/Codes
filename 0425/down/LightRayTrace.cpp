@@ -73,6 +73,7 @@ namespace Light
     
     Vector3 SingleSourceContribution(Vector4 vPoint, Vector4 vNorm, Model * pModel, const Source &source)
     {
+
         /*
         vPoint: 表示表面交点，必定为坐标
         vNorm: 表示表面法向量，必定为向量
@@ -87,8 +88,16 @@ namespace Light
 
         你需要完成这个函数以通过 cornellbox
         */
-       
-       return MakeVector3();
+        Vector4 lightDir = vPoint - source.pos;
+        if (dot(vNorm, -lightDir) <= EPS) return MakeVector3();
+        double length = lightDir.len();
+        lightDir = lightDir / lightDir.len();
+        Vector4 normal;
+        Surface surface;
+        double d = pModel->GetIntersection(Ray(source.pos + EPS * lightDir, lightDir), &normal, &surface);
+        if (d < (1.0 - EPS) * length) return MakeVector3();
+        double cos_theta = -dot(lightDir, vNorm) / lightDir.len() / vNorm.len();
+        return source.intensity * cos_theta / PI / d / d;
     }
 
     Vector4 SpecularReflectRay(Vector4 vIn, Vector4 vNorm)
@@ -101,6 +110,7 @@ namespace Light
 
         你需要完成这个函数以通过 balls
         */
-        return MakeVector4();
+        Vector4 direct = 2 * dot(vIn, vNorm) * vNorm - vIn;
+        return direct / direct.len();
     }
 }

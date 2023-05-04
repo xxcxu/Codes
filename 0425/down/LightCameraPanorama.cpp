@@ -23,6 +23,7 @@ namespace Light
 
     Ray CameraPanorama::GenerateRay(double x, double y) const
     {
+        
         return Ray();
     }
 }
